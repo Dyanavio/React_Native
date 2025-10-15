@@ -8,12 +8,16 @@ import Cart from '../pages/cart/cart';
 import Group from '../pages/group/group';
 import Product from '../pages/product/product';
 import About from '../pages/about/about';
+import { useState } from 'react';
+import ModalView from './ui/ModalView';
+
 
 export default function App() {
+  const [modalData, setModalData] = useState<ModalData|null>(null);
 
-  const showModal = (data: ModalData) =>
+  const showModal = (data: ModalData|null) =>
   {
-    console.log(data);
+    setModalData(data);
   };
 
   return <AppContext.Provider value={{showModal}}>
@@ -30,7 +34,7 @@ export default function App() {
         </Route>
       </Routes>
     </BrowserRouter>
+    <ModalView data={modalData}/>
   </AppContext.Provider>
   
 }
-

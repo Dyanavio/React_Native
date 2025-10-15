@@ -1,5 +1,15 @@
-type ModalData = {
-    message: string,
+import type { ProjButtonTypes } from "../ui/ProjButton"
+
+type ModalButtonData = {
+    title: string,
+    action: () => void,
+    type: ProjButtonTypes
 }
 
-export type { ModalData };
+type ModalData = {
+    title?: string
+    message: string,
+    buttons?: Array<ModalButtonData>
+}
+
+export type { ModalData, ModalButtonData };
