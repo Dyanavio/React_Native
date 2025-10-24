@@ -5,11 +5,11 @@ import Privacy from '../pages/privacy/Privacy';
 import AppContext from '../features/context/AppContext';
 import type { ModalData } from '../features/types/ModalData';
 import Cart from '../pages/cart/cart';
-import Group from '../pages/group/group';
 import Product from '../pages/product/product';
 import About from '../pages/about/about';
 import { useState } from 'react';
 import ModalView from './ui/ModalView';
+import Group from '../pages/group/Group';
 
 
 export default function App() {
@@ -23,14 +23,14 @@ export default function App() {
   return <AppContext.Provider value={{showModal}}>
       <BrowserRouter>
       <Routes>
-        <Route path="cart" element={<Cart />}/>
-        <Route path="group/:slug" element={<Group />}/>
-        <Route path="product/:slug" element={<Product/>}/>
-
         <Route path="/" element={<Layout/>}>
         <Route index element={<Home/>}/>
         <Route path="privacy" element={<Privacy/>}/>
         <Route path="about" element={<About/>}/>
+
+        <Route path="cart" element={<Cart />}/>
+        <Route path="group/:slug" element={<Group />}/>
+        <Route path="product/:slug" element={<Product/>}/>
         </Route>
       </Routes>
     </BrowserRouter>

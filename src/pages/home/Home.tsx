@@ -1,22 +1,22 @@
-import { useContext } from 'react';
-import {StyleSheet, View, Text} from 'react-native';
-import AppContext from '../../features/context/AppContext';
-import {ProjButton, ProjButtonTypes} from '../../features/ui/ProjButton';
+//import { useContext } from 'react';
+import {StyleSheet, View} from 'react-native';
+//import AppContext from '../../features/context/AppContext';
+//import {ProjButton, ProjButtonTypes} from '../../features/ui/ProjButton';
+import ProductGroupsWidget from '../../widgets/product_groups/ProductGroupsWidget';
+
 
 export default function Home() {
-  const {showModal} = useContext(AppContext);
-  //const onShowPress = () =>
-  //{
-  //  showModal({
-  //    title: "Header",
-  //    message: "Short message"
-  //  });
-  //};
+  //const {showModal} = useContext(AppContext);
 
   return  <View style={styles.root}>
-      <Text>Hello there</Text>
+      <ProductGroupsWidget/>
 
-      <ProjButton type={ProjButtonTypes.primary} 
+      
+
+      {/*
+        <Text>Hello there</Text>
+
+        <ProjButton type={ProjButtonTypes.primary} 
           action={() => showModal({title: "Three buttons", message: "Three buttons", 
             buttons: [{
               title: "A",
@@ -93,6 +93,8 @@ export default function Home() {
             }
           ]})} 
           title='Show Modal' style={{maxWidth: 150, width: "20%"}}/>
+      */}
+      
     </View>
   
 }
