@@ -4,7 +4,7 @@ type Product = {
     "name": string,
     "description": string | null,
     "slug": string | null,
-    "imageUrl": string | null,
+    "imageUrl": string,
     "price": number,
     "stock": number,
     "deletedAt": string | null,
