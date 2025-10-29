@@ -1,15 +1,19 @@
-//import { useContext } from 'react';
 import {StyleSheet, View} from 'react-native';
-//import AppContext from '../../features/context/AppContext';
-//import {ProjButton, ProjButtonTypes} from '../../features/ui/ProjButton';
 import ProductGroupsWidget from '../../widgets/product_groups/ProductGroupsWidget';
+import { useContext } from 'react';
+import AppContext from '../../features/context/AppContext';
+import ProjButton, { ProjButtonTypes } from '../../features/ui/ProjButton';
 
 
 export default function Home() {
-  //const {showModal} = useContext(AppContext);
+  const {enqueueToast} = useContext(AppContext);
 
   return  <View style={styles.root}>
       <ProductGroupsWidget/>
+
+       <ProjButton type={ProjButtonTypes.secondary} 
+          action={() => enqueueToast({message: Math.random().toFixed(3).toString()})} 
+          title='Show Toast' style={{maxWidth: 150, width: "20%"}}/>
 
       
 
