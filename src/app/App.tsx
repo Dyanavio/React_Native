@@ -12,8 +12,8 @@ import ModalView from './ui/ModalView';
 import Group from '../pages/group/Group';
 import Toast from './ui/Toast';
 import type { ToastData } from '../features/types/ToastData';
-import Broker from './ui/broker';
 import type { BrokerData } from '../features/types/BrokerData';
+import Broker from './ui/Broker';
 
 
 export default function App() {
@@ -36,18 +36,26 @@ export default function App() {
     const brokerData: BrokerData = {
       type: "Toast",
       name: "Toast: " + data?.message,
-      action: () => {
-        setTimeout(() => {
-          showToast(data);
-          Broker.instance.timeout += 2000;
-        }, Broker.instance.timeout);
-        setTimeout(() => {
-          setShownToastData(null);
-          Broker.instance.timeout -= 2000;
-          brokerData.callback(brokerData, undefined)}, 2000 + Broker.instance.timeout);
-      },
-      callback: (task, err) => console.log(task, err)
+      action: () => showToast(data),
+      callback: (task, err) => {setShownToastData(null); console.log(task, err) },
+      toastData: data
     }
+    //const brokerData: BrokerData = {
+    //  type: "Toast",
+    //  name: "Toast: " + data?.message,
+    //  action: () => {
+    //    setTimeout(() => {
+    //      console.log(Broker.instance.timeout, data.message);
+    //      showToast(data);
+    //      Broker.instance.timeout += 2000;
+    //    }, Broker.instance.timeout);
+    //    setTimeout(() => {
+    //      setShownToastData(null);
+    //      Broker.instance.timeout -= 2000;
+    //      brokerData.callback(brokerData, undefined)}, 2000 + Broker.instance.timeout);
+    //  },
+    //  callback: (task, err) => console.log(task, err)
+    //}
     Broker.instance.enqueueTask(brokerData);
       
   }

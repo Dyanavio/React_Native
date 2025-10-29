@@ -15,8 +15,23 @@ export default class Broker {
         this.timeout = 0;
     }
 
-    enqueueTask(data: BrokerData){
-        console.log(data);
-        data.action();
+    enqueueTask(data: BrokerData) {
+        switch(data.type)
+        {
+            case "Toast":
+                setTimeout(() => {
+                    console.log(Broker.instance.timeout, data.name);
+                    data.action();
+                    Broker.instance.timeout += data.toastData.timeout || 2000;
+                }, Broker.instance.timeout);
+                setTimeout(() => {
+                    Broker.instance.timeout -= data.toastData.timeout || 2000;
+                    data.callback(data, undefined);
+                }, data.toastData.timeout || 2000 + Broker.instance.timeout)
+                break;
+        }
+        
+
+        
     }
 }
